@@ -23,7 +23,7 @@ Current platform:
 
 ## Project Structure
 
-```text
+
 **Phases (Sequential):**
 
 | Phase | Domain | Status | Target |
@@ -37,7 +37,7 @@ Current platform:
 | **Phase 6** | Security Operations (Wazuh SIEM) | ⏳ Planned 
 | **Phase 7** | ITSM Helpdesk (osTicket) | ⏳ Planned 
 | **Phase 8** | Infrastructure as Code & Automation | ⏳ Planned |
-```
+
 
 ---
 
