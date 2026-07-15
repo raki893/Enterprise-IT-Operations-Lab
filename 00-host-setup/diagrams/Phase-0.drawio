@@ -1,0 +1,162 @@
+<mxfile host="app.diagrams.net" pages="2">
+  <diagram name="Physical Architecture" id="RpOUlLbfQfCEnkxK3VkE">
+    <mxGraphModel dx="998" dy="1407" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="llw3JA0QUT87kZoAZPqh-1" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontStyle=1" value="&lt;font style=&quot;font-size: 15px;&quot;&gt;Phase 0 — Physical Architecture (Ryzen 3700X Workstation in Home Network)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="40" width="550" x="200" y="140" as="geometry" />
+        </mxCell>
+        <mxCell id="llw3JA0QUT87kZoAZPqh-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1;fillColor=#e6f1fb;strokeColor=#185fa5;strokeWidth=2" value="" vertex="1">
+          <mxGeometry height="350" width="600" x="175" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="llw3JA0QUT87kZoAZPqh-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#e1f5ee;strokeColor=#0f6e56;strokeWidth=1.5" value="NVMe + HDD Storage" vertex="1">
+          <mxGeometry height="80" width="160" x="200" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="llw3JA0QUT87kZoAZPqh-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#faeeda;strokeColor=#854f0b;strokeWidth=1.5" value="Ryzen 3700x&lt;div&gt;8 Cores / 16 Threads&lt;br&gt;&lt;br&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="80" width="160" x="400" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="llw3JA0QUT87kZoAZPqh-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#eaf3de;strokeColor=#3b6d11;strokeWidth=1.5" value="RAM&lt;br&gt;32GB Memory&lt;br&gt;PSU 650W" vertex="1">
+          <mxGeometry height="80" width="140" x="600" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="llw3JA0QUT87kZoAZPqh-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f1efe8;strokeColor=#5f5e5a;strokeWidth=1.5" value="NIC 1 (onboard)&#xa;Management NIC" vertex="1">
+          <mxGeometry height="60" width="140" x="210" y="335" as="geometry" />
+        </mxCell>
+        <mxCell id="llw3JA0QUT87kZoAZPqh-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f1efe8;strokeColor=#5f5e5a;strokeWidth=1.5" value="NIC 2 (add-in)&#xa;Optional expansion" vertex="1">
+          <mxGeometry height="60" width="140" x="410" y="335" as="geometry" />
+        </mxCell>
+        <mxCell id="llw3JA0QUT87kZoAZPqh-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f1efe8;strokeColor=#5f5e5a;strokeWidth=1.5" value="GPU (RX 580)&#xa;PCIe passthrough capable" vertex="1">
+          <mxGeometry height="60" width="140" x="610" y="335" as="geometry" />
+        </mxCell>
+        <mxCell id="llw3JA0QUT87kZoAZPqh-10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#eeedfe;strokeColor=#534ab7;strokeWidth=1.5" value="System Specifications&#xa;Case: Standard ATX | Airflow: front intake, rear exhaust&#xa;CPU TDP: 105W | Boot device: NVMe (tank pool)&#xa;Cooling: Active case fans | Power: 230V AC" vertex="1">
+          <mxGeometry height="70" width="440" x="260" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="llw3JA0QUT87kZoAZPqh-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#faece7;strokeColor=#993c1d;strokeWidth=2" value="Home Router&lt;br&gt;192.168.1.1/24&lt;br&gt;(Gateway)" vertex="1">
+          <mxGeometry height="80" width="160" x="240" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="llw3JA0QUT87kZoAZPqh-12" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#faece7;strokeColor=#993c1d;strokeWidth=2" value="Admin Laptop&#xa;SSH + Web UI Access&#xa;Port 8006" vertex="1">
+          <mxGeometry height="80" width="160" x="560" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="llw3JA0QUT87kZoAZPqh-13" edge="1" parent="1" source="llw3JA0QUT87kZoAZPqh-11" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=0;strokeColor=#3d3d3d;strokeWidth=2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="llw3JA0QUT87kZoAZPqh-7" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="160" y="590" />
+              <mxPoint x="160" y="370" />
+              <mxPoint x="210" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="llw3JA0QUT87kZoAZPqh-14" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10" value="Ethernet (Cat 6)&#xa;Port 1" vertex="1">
+          <mxGeometry height="30" width="100" x="150" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="llw3JA0QUT87kZoAZPqh-15" edge="1" parent="1" source="llw3JA0QUT87kZoAZPqh-12" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=0;strokeColor=#3d3d3d;strokeWidth=2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="llw3JA0QUT87kZoAZPqh-8" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="790" y="590" />
+              <mxPoint x="790" y="420" />
+              <mxPoint x="590" y="420" />
+              <mxPoint x="590" y="370" />
+              <mxPoint x="550" y="370" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="llw3JA0QUT87kZoAZPqh-16" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10" value="Ethernet (Cat 6)&#xa;Direct Connect" vertex="1">
+          <mxGeometry height="30" width="100" x="710" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="llw3JA0QUT87kZoAZPqh-17" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10;fontStyle=0;italic=1" value="Power: 230V AC to PSU (standard wall outlet)&#xa;All storage and compute redundancy within this single system" vertex="1">
+          <mxGeometry height="40" width="550" x="200" y="640" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="8_bKuJUG7P7TTRFJB-wm" name="Page-2">
+    <mxGraphModel dx="1853" dy="2211" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-1" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=18;fontStyle=1" value="&lt;h1 style=&quot;&quot;&gt;Phase 0 — Logical Architecture (Proxmox VM Topology)&lt;/h1&gt;" vertex="1">
+          <mxGeometry height="100" width="980" x="330" y="-17" as="geometry" />
+        </mxCell>
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1;fillColor=#eeedfe;strokeColor=#534ab7;strokeWidth=2" value="&lt;meta charset=&quot;utf-8&quot;&gt;&lt;h2 style=&quot;forced-color-adjust: none; color: rgb(0, 0, 0); font-family: Helvetica; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; letter-spacing: normal; orphans: 2; text-align: center; text-indent: 0px; text-transform: none; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; white-space: normal; background-color: rgb(236, 236, 236); text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial; line-height: 10.5px;&quot;&gt;Virtual Machines &amp;amp; LXC Containers (Phase 1–8 workloads)&lt;/h2&gt;" vertex="1">
+          <mxGeometry height="240" width="780" x="430" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f1efe8;strokeColor=#5f5e5a;strokeWidth=1.5" value="pfSense&#xa;(Router / Firewall)&#xa;Phase 1" vertex="1">
+          <mxGeometry height="70" width="110" x="470" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f1efe8;strokeColor=#5f5e5a;strokeWidth=1.5" value="DC01&#xa;(Active Directory)&#xa;Phase 2" vertex="1">
+          <mxGeometry height="70" width="110" x="620" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f1efe8;strokeColor=#5f5e5a;strokeWidth=1.5" value="CLIENT01&#xa;(Windows 10/11)&#xa;Phase 2" vertex="1">
+          <mxGeometry height="70" width="110" x="770" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f1efe8;strokeColor=#5f5e5a;strokeWidth=1.5" value="UBU01&#xa;(Ubuntu Linux)&#xa;Phase 3" vertex="1">
+          <mxGeometry height="70" width="110" x="920" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f1efe8;strokeColor=#5f5e5a;strokeWidth=1.5" value="Wazuh&#xa;(SIEM / Security)&#xa;Phase 6 (LXC)" vertex="1">
+          <mxGeometry height="70" width="110" x="1065" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f1efe8;strokeColor=#5f5e5a;strokeWidth=1.5" value="Cloud&#xa;(Hybrid/Intune)&#xa;Phase 4" vertex="1">
+          <mxGeometry height="70" width="110" x="550" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f1efe8;strokeColor=#5f5e5a;strokeWidth=1.5" value="Monitor&#xa;(Prometheus/Grafana)&#xa;Phase 5" vertex="1">
+          <mxGeometry height="70" width="110" x="700" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f1efe8;strokeColor=#5f5e5a;strokeWidth=1.5" value="ITSM&#xa;(ServiceNow/Jira)&#xa;Phase 7" vertex="1">
+          <mxGeometry height="70" width="110" x="840" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f1efe8;strokeColor=#5f5e5a;strokeWidth=1.5" value="Config&#xa;(Ansible/Terraform)&#xa;Phase 8" vertex="1">
+          <mxGeometry height="70" width="110" x="980" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1;fillColor=#eaf3de;strokeColor=#3b6d11;strokeWidth=2" value="&lt;h2&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;Storage Pools (ZFS)&lt;/font&gt;&lt;/h2&gt;" vertex="1">
+          <mxGeometry height="150" width="782" x="428" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#e1f5ee;strokeColor=#0f6e56;strokeWidth=2" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;NVMe Hot Tier (tank)&lt;br&gt;Fast I/O&lt;br&gt;OS • Snapshots • Active VMs&lt;br&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="280" x="450" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#faeeda;strokeColor=#854f0b;strokeWidth=2" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;HDD Cold Tier (archive)&lt;br&gt;Long-term retention&lt;br&gt;Daily Backups • Archives&lt;br&gt;Retention: 7 daily + 4 weekly&lt;/font&gt;" vertex="1">
+          <mxGeometry height="90" width="280" x="910" y="390" as="geometry" />
+        </mxCell>
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-16" edge="1" parent="1" source="TNZWAU5KYhN_NSD0iMVZ-14" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#3d3d3d;strokeWidth=2;exitX=0.999;exitY=0.129;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.001;entryY=0.17;entryDx=0;entryDy=0;entryPerimeter=0;" target="TNZWAU5KYhN_NSD0iMVZ-15" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="730" y="402" />
+              <mxPoint x="920" y="402" />
+              <mxPoint x="934" y="402" />
+            </Array>
+            <mxPoint x="664" y="462" as="sourcePoint" />
+            <mxPoint x="1084" y="463" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-17" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontStyle=0" value="&lt;div&gt;&lt;font&gt;Each VM: P0-baseline snapshot + daily incremental snapshots on NVMe hot tier&lt;/font&gt;&lt;/div&gt;&lt;font&gt;Daily snapshots → backup (Proxmox snapshot mode)&lt;br&gt;Mode: snapshot | Schedule: 03:00 UTC | Retention: 7 daily + 4 weekly&lt;/font&gt;" vertex="1">
+          <mxGeometry height="50" width="340" x="880" y="800" as="geometry" />
+        </mxCell>
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-18" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1;fillColor=#e6f1fb;strokeColor=#185fa5;strokeWidth=2" value="&lt;h2&gt;&lt;br&gt;&lt;/h2&gt;&lt;h2&gt;&lt;br&gt;&lt;/h2&gt;&lt;h2&gt;&lt;br&gt;&lt;/h2&gt;&lt;h2&gt;&lt;br&gt;&lt;/h2&gt;&lt;h2&gt;Proxmox VE 9.1 Hypervisor Foundation&lt;/h2&gt;" vertex="1">
+          <mxGeometry height="230" width="810" x="420" y="550" as="geometry" />
+        </mxCell>
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-19" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=10" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Linux Kernel • QEMU/KVM • ZFS Filesystem Management&lt;br&gt;vmbr0 (LAN bridge: management, lab traffic) | vmbr1 (Isolated lab network)&lt;br&gt;PCI passthrough enabled for GPU • Nested virtualization support&lt;br&gt;HA cluster ready (single node now, 2-node ready)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="80" width="490" x="575" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-20" edge="1" parent="1" source="TNZWAU5KYhN_NSD0iMVZ-3" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#888780;strokeWidth=1;startArrow=none;endArrow=none" target="TNZWAU5KYhN_NSD0iMVZ-18" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="390" y="135" />
+              <mxPoint x="390" y="755" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-21" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=11;fontStyle=1" value="Diagramming Hygiene Applied:" vertex="1">
+          <mxGeometry height="20" width="250" x="390" y="790" as="geometry" />
+        </mxCell>
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-22" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9" value="✓ Every line labelled: backup flow, network bridges, storage paths" vertex="1">
+          <mxGeometry height="20" width="400" x="405" y="815" as="geometry" />
+        </mxCell>
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-23" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9" value="✓ Stable identity: pfSense / DC01 / CLIENT01 / UBU01 consistent across all phases" vertex="1">
+          <mxGeometry height="20" width="450" x="405" y="840" as="geometry" />
+        </mxCell>
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-24" parent="1" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9" value="✓ Color convention: Purple (compute layer) → Green (storage) → Blue (foundation)" vertex="1">
+          <mxGeometry height="20" width="450" x="405" y="865" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

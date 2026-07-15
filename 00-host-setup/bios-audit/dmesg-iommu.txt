@@ -1,0 +1,4 @@
+root@pve:~# dmesg | grep -e DMAR -e IOMMU
+[    0.719268] pci 0000:00:00.2: AMD-Vi: IOMMU performance counters supported
+[    0.723416] perf/amd_iommu: Detected AMD IOMMU #0 (2 banks, 4 counters/bank).
+root@pve:~#

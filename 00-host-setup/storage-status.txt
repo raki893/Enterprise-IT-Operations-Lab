@@ -1,0 +1,26 @@
+root@pve:~# pvesm status
+Name             Type     Status     Total (KiB)      Used (KiB) Available (KiB)        %
+local             dir     active       933857280             128       933857152    0.00%
+local-zfs     zfspool     active       955189296        21332028       933857268    2.23%
+tank              dir     active       459275648        21604480       437671168    4.70%
+
+
+
+root@pve:~# df -h
+Filesystem        Size  Used Avail Use% Mounted on
+udev               15G     0   15G   0% /dev
+tmpfs             3.2G  2.0M  3.2G   1% /run
+rpool/ROOT/pve-1  895G  3.9G  891G   1% /
+tmpfs              16G   46M   16G   1% /dev/shm
+efivarfs          128K   49K   75K  40% /sys/firmware/efi/efivars
+tmpfs              16G     0   16G   0% /tmp
+tmpfs             5.0M     0  5.0M   0% /run/lock
+tmpfs             1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+rpool             891G  128K  891G   1% /rpool
+rpool/var-lib-vz  891G  128K  891G   1% /var/lib/vz
+rpool/data        891G  128K  891G   1% /rpool/data
+rpool/ROOT        891G  128K  891G   1% /rpool/ROOT
+/dev/fuse         128M   20K  128M   1% /etc/pve
+tmpfs             1.0M     0  1.0M   0% /run/credentials/getty@tty1.service
+tank              438G   21G  418G   5% /tank
+tmpfs             3.2G  4.0K  3.2G   1% /run/user/0

@@ -1,0 +1,91 @@
+# Phase 0 .gitignore — home lab infrastructure
+
+## Proxmox-specific
+*.qcow2
+*.qcow2.snap
+*.iso
+/pve-backup/
+/vzdump/
+
+## Sensitive data (never commit)
+*.key
+*.pem
+*.crt
+*.pfx
+*.p12
+/secrets/
+/passwords/
+.env
+.env.local
+*.vault
+ansible/roles/*/files/*.key
+
+## VM disk images
+/vm-disks/
+/backups/
+
+## Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+## IDE / editor configs (optional; remove if you want to commit)
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+## Logs (build/deploy only; not lab logs)
+*.log
+build/
+dist/
+
+## OS-specific
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+desktop.ini
+
+## Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+venv/
+env/
+
+## Node (future: frontend dashboards)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+## Terraform (Phase 8)
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+override.tf.json
+
+## Ansible (Phase 8)
+*.retry
+ansible-vault-pass
+
+## Docker
+.dockerignore
+docker-compose.override.yml
+
+## Large files (diagrams can be committed; exports should not)
+*.png.backup
+*.drawio.backup
+*.drawio~
+
+## Project-specific junk
+.phase-*/
+/scratch/
+/test-results/
+
