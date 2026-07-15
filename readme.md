@@ -31,7 +31,7 @@ Current platform:
 | **Phase 0** | Host Foundation | ✅ Complete 
 | **Phase 1** | Network Architecture | ⏳ Planned 
 | **Phase 2** | Windows Server & Active Directory | ⏳ Planned 
-| **Phase 3** | Linux & Docker | ⏳ Planned | Apr 30, 2025 |
+| **Phase 3** | Linux & Docker | ⏳ Planned
 | **Phase 4** | Hybrid Cloud & Intune | ⏳ Planned 
 | **Phase 5** | Monitoring & Backup | ⏳ Planned 
 | **Phase 6** | Security Operations (Wazuh SIEM) | ⏳ Planned 
