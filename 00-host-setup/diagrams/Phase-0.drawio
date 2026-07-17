@@ -28,7 +28,7 @@
         <mxCell id="llw3JA0QUT87kZoAZPqh-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#f1efe8;strokeColor=#5f5e5a;strokeWidth=1.5" value="GPU (RX 580)&#xa;PCIe passthrough capable" vertex="1">
           <mxGeometry height="60" width="140" x="610" y="335" as="geometry" />
         </mxCell>
-        <mxCell id="llw3JA0QUT87kZoAZPqh-10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#eeedfe;strokeColor=#534ab7;strokeWidth=1.5" value="System Specifications&#xa;Case: Standard ATX | Airflow: front intake, rear exhaust&#xa;CPU TDP: 105W | Boot device: NVMe (tank pool)&#xa;Cooling: Active case fans | Power: 230V AC" vertex="1">
+        <mxCell id="llw3JA0QUT87kZoAZPqh-10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;fillColor=#eeedfe;strokeColor=#534ab7;strokeWidth=1.5" value="System Specifications&#xa;Case: Standard ATX | Airflow: front intake, rear exhaust&#xa;CPU TDP: 105W | Boot device: NVMe (rpool)&#xa;Cooling: Active case fans | Power: 230V AC" vertex="1">
           <mxGeometry height="70" width="440" x="260" y="430" as="geometry" />
         </mxCell>
         <mxCell id="llw3JA0QUT87kZoAZPqh-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=12;fillColor=#faece7;strokeColor=#993c1d;strokeWidth=2" value="Home Router&lt;br&gt;192.168.1.1/24&lt;br&gt;(Gateway)" vertex="1">
@@ -110,10 +110,10 @@
         <mxCell id="TNZWAU5KYhN_NSD0iMVZ-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1;fillColor=#eaf3de;strokeColor=#3b6d11;strokeWidth=2" value="&lt;h2&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;Storage Pools (ZFS)&lt;/font&gt;&lt;/h2&gt;" vertex="1">
           <mxGeometry height="150" width="782" x="428" y="360" as="geometry" />
         </mxCell>
-        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#e1f5ee;strokeColor=#0f6e56;strokeWidth=2" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;NVMe Hot Tier (tank)&lt;br&gt;Fast I/O&lt;br&gt;OS • Snapshots • Active VMs&lt;br&gt;&lt;/font&gt;" vertex="1">
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#e1f5ee;strokeColor=#0f6e56;strokeWidth=2" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Primary ZFS Tier (rpool)&lt;br&gt;Fast I/O&lt;br&gt;OS • Snapshots • Active VMs&lt;br&gt;&lt;/font&gt;" vertex="1">
           <mxGeometry height="90" width="280" x="450" y="390" as="geometry" />
         </mxCell>
-        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#faeeda;strokeColor=#854f0b;strokeWidth=2" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;HDD Cold Tier (archive)&lt;br&gt;Long-term retention&lt;br&gt;Daily Backups • Archives&lt;br&gt;Retention: 7 daily + 4 weekly&lt;/font&gt;" vertex="1">
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#faeeda;strokeColor=#854f0b;strokeWidth=2" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Secondary Storage (tank)&lt;br&gt;Backups and archives&lt;br&gt;ISO images • Templates • Retention&lt;br&gt;Retention: 7 daily + 4 weekly&lt;/font&gt;" vertex="1">
           <mxGeometry height="90" width="280" x="910" y="390" as="geometry" />
         </mxCell>
         <mxCell id="TNZWAU5KYhN_NSD0iMVZ-16" edge="1" parent="1" source="TNZWAU5KYhN_NSD0iMVZ-14" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#3d3d3d;strokeWidth=2;exitX=0.999;exitY=0.129;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.001;entryY=0.17;entryDx=0;entryDy=0;entryPerimeter=0;" target="TNZWAU5KYhN_NSD0iMVZ-15" value="">
@@ -127,7 +127,7 @@
             <mxPoint x="1084" y="463" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-17" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontStyle=0" value="&lt;div&gt;&lt;font&gt;Each VM: P0-baseline snapshot + daily incremental snapshots on NVMe hot tier&lt;/font&gt;&lt;/div&gt;&lt;font&gt;Daily snapshots → backup (Proxmox snapshot mode)&lt;br&gt;Mode: snapshot | Schedule: 03:00 UTC | Retention: 7 daily + 4 weekly&lt;/font&gt;" vertex="1">
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-17" parent="1" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=9;fontStyle=0" value="&lt;div&gt;&lt;font&gt;Each VM: P0-baseline snapshot + daily incremental snapshots on rpool&lt;/font&gt;&lt;/div&gt;&lt;font&gt;Daily snapshots → backup (Proxmox snapshot mode)&lt;br&gt;Mode: snapshot | Schedule: 03:00 UTC | Retention: 7 daily + 4 weekly&lt;/font&gt;" vertex="1">
           <mxGeometry height="50" width="340" x="880" y="800" as="geometry" />
         </mxCell>
         <mxCell id="TNZWAU5KYhN_NSD0iMVZ-18" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=14;fontStyle=1;fillColor=#e6f1fb;strokeColor=#185fa5;strokeWidth=2" value="&lt;h2&gt;&lt;br&gt;&lt;/h2&gt;&lt;h2&gt;&lt;br&gt;&lt;/h2&gt;&lt;h2&gt;&lt;br&gt;&lt;/h2&gt;&lt;h2&gt;&lt;br&gt;&lt;/h2&gt;&lt;h2&gt;Proxmox VE 9.1 Hypervisor Foundation&lt;/h2&gt;" vertex="1">

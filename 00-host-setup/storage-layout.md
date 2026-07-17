@@ -110,112 +110,73 @@ sda
 └── sda4    ZFS Member (tank)
 ```
 
-The HDD is divided into two ZFS partitions.
+# 4. Dataset Hierarchy
 
-The first ZFS partition participates in the mirrored **rpool**, while the second partition forms the standalone **tank** pool.
+This section defines the ZFS dataset organization for the Phase 0 storage architecture.
 
-This layout allows the operating system and VM storage to benefit from mirrored redundancy while providing a separate storage pool for additional data.
+The current layout uses two pools with distinct roles:
 
----
+- `rpool` is the primary mirrored pool for the Proxmox OS, VM disks, and core datasets.
+- `tank` is the secondary standalone pool for ISO images, templates, backups, and archive data.
 
-## 2.3 Storage Hierarchy
+Design goals:
 
-```
-                    Physical Storage
-                           │
-        ┌──────────────────┴──────────────────┐
-        │                                     │
-  NVMe SSD                              Seagate HDD
-  476.9 GB                               931.5 GB
-        │                                     │
-        │                                     │
-        ├──────────────┐               ┌──────┘
-        │              │               │
-        │         sda3 (475 GB)        │
-        │              │               │
-        └────── Mirror ────────────────┘
-                       │
-                    rpool
-                       │
-        ├─────────────────────────────────┐
-        │                                 │
-   Proxmox OS                       VM Storage
-   Root Filesystem                  local-zfs
-   ZFS Datasets
-
-                       │
-
-                 sda4 (455 GB)
-                       │
-                     tank
-                       │
-      ISO Images
-      Backups
-      Templates
-      Additional Lab Storage
-```
+- Keep the operating system and active VM storage on the mirrored primary pool.
+- Separate active workloads from backup data.
+- Allow independent VM restoration.
+- Support incremental ZFS send/receive operations.
+- Maintain predictable storage growth.
 
 ---
 
-# 3. ZFS Pool Architecture
+## 4.1 rpool (Primary Tier)
 
-The current Proxmox installation contains two independent ZFS pools.
+The `rpool` pool contains the Proxmox OS, root filesystem, VM disks, and system metadata.
 
----
-
-## 3.1 rpool
-
-The **rpool** serves as the primary storage pool for the Proxmox host.
-
-### Pool Information
+Storage characteristics:
 
 | Property | Value |
-|----------|-------|
-| Pool Name | rpool |
-| Size | 944 GB |
-| Allocated | 24.6 GB |
-| Free | 919 GB |
-| Capacity | 2% |
-| Fragmentation | 1% |
-| Deduplication | 1.00x |
+|---|---|
+| Pool | `rpool` |
+| Backing devices | `/dev/nvme0n1p3` and `/dev/sda3` |
+| Role | Primary host and active VM storage |
 | Health | ONLINE |
-
-The pool stores:
-
-- Proxmox operating system
-- Root filesystem
-- VM virtual disks
-- VM snapshots
-- ZFS datasets
-- System metadata
 
 Current datasets include:
 
-```
+```text
 rpool
 ├── ROOT
 │   └── pve-1
 ├── data
-│   ├── vm-100-disk-0
-│   ├── vm-100-state-P0-Baseline-Configured
-│   ├── vm-101-disk-0
-│   ├── vm-101-disk-1
-│   ├── vm-101-disk-4
-│   ├── vm-102-disk-0
-│   └── vm-102-disk-1
 └── var-lib-vz
 ```
 
 ---
 
-### Current Pool Status
+## 4.2 tank (Secondary Tier)
 
-```
-NAME    SIZE  ALLOC  FREE  FRAG CAP HEALTH
-rpool   944G 24.6G 919G   1% 2% ONLINE
-```
+The `tank` pool provides secondary storage independent of the system pool.
 
-During validation the pool reported checksum/data errors.
+Storage characteristics:
+
+| Property | Value |
+|---|---|
+| Pool | `tank` |
+| Backing device | `/dev/sda4` |
+| Role | Backups, ISO images, templates, and additional lab storage |
+| Mount point | `/tank` |
+| Health | ONLINE |
+
+Current Proxmox storage backends configured in the host are:
+
+| Storage | Type | Purpose |
+|----------|------|---------|
+| local | Directory | ISO images, templates, backups |
+| local-zfs | ZFS Pool | VM disks |
+| tank | Directory | Additional storage |
+
+---
 
 ```
 errors: 122 data errors
@@ -294,108 +255,68 @@ These virtual machines represent the initial infrastructure used throughout the 
 
 This section defines the ZFS dataset organization for the Phase 0 storage architecture.
 
-The design follows a two-tier storage model:
+The current layout uses two pools with distinct roles:
 
-- **Tank (Hot Tier):** High-performance NVMe storage used for active VM workloads.
-- **Archive (Cold Tier):** Large-capacity HDD storage used for backups and long-term retention.
+- `rpool` is the primary mirrored pool for the Proxmox OS, VM disks, and core datasets.
+- `tank` is the secondary standalone pool for ISO images, templates, backups, and archive data.
 
 Design goals:
 
+- Keep the operating system and active VM storage on the mirrored primary pool.
 - Separate active workloads from backup data.
 - Allow independent VM restoration.
 - Support incremental ZFS send/receive operations.
 - Maintain predictable storage growth.
-- Enable future migration to RAID-1 and HA storage.
 
 ---
 
-## 4.1 Tank (Hot Tier) Dataset Organization
+## 4.1 rpool (Primary Tier)
 
-The `tank` pool contains all active Proxmox VM disks and system metadata.
+The `rpool` pool contains the Proxmox OS, root filesystem, VM disks, and system metadata.
+
+Storage characteristics:
+
+| Property | Value |
+|---|---|
+| Pool | `rpool` |
+| Backing devices | `/dev/nvme0n1p3` and `/dev/sda3` |
+| Role | Primary host and active VM storage |
+| Health | ONLINE |
+
+Current datasets include:
+
+```text
+rpool
+├── ROOT
+│   └── pve-1
+├── data
+└── var-lib-vz
+```
+
+---
+
+## 4.2 tank (Secondary Tier)
+
+The `tank` pool provides secondary storage independent of the system pool.
 
 Storage characteristics:
 
 | Property | Value |
 |---|---|
 | Pool | `tank` |
-| Device | 1TB NVMe |
-| Compression | LZ4 |
-| Workload | Active VM disks |
-| Priority | Performance |
-| Snapshot frequency | Daily |
-| Recordsize | 16K (VM optimized) |
+| Backing device | `/dev/sda4` |
+| Role | Backups, ISO images, templates, and additional lab storage |
+| Mount point | `/tank` |
+| Health | ONLINE |
 
-Dataset layout:
+Current Proxmox storage backends configured in the host are:
 
-```text
-tank/                                      # Root dataset (LZ4 compression)
-│
-├── vm-disks/                              # VM disk storage container
-│   │
-│   ├── vm-100-disk-1/                     # pfSense VM
-│   │   ├── disk.qcow2                     # 40GB virtual disk
-│   │   ├── @P0-baseline                   # Initial reference snapshot
-│   │   └── @YYYY-MM-DD-daily              # Daily snapshots
-│   │
-│   ├── vm-101-disk-1/                     # Domain Controller (DC01)
-│   │   ├── disk.qcow2                     # 50GB virtual disk
-│   │   ├── @P0-baseline
-│   │   └── @YYYY-MM-DD-daily
-│   │
-│   ├── vm-102-disk-1/                     # Windows Client (CLIENT01)
-│   │   ├── disk.qcow2                     # 60GB virtual disk
-│   │   ├── @P0-baseline
-│   │   └── @YYYY-MM-DD-daily
-│   │
-│   ├── vm-103-disk-1/                     # Ubuntu Server (UBU01)
-│   │   ├── disk.qcow2                     # 80GB virtual disk
-│   │   ├── @P0-baseline
-│   │   └── @YYYY-MM-DD-daily
-│   │
-│   └── vm-104-disk-1/                     # Wazuh SIEM LXC
-│       ├── disk.qcow2                     # 30GB virtual disk
-│       ├── @P0-baseline
-│       └── @YYYY-MM-DD-daily
-│
-├── system-meta/                           # Proxmox metadata
-│   ├── cluster-config
-│   └── vm-configs
-│
-└── reserved/                              # Future expansion area
-```
-## 4.2 Archive (Cold Tier) Dataset Organization
+| Storage | Type | Purpose |
+|----------|------|---------|
+| local | Directory | ISO images, templates, backups |
+| local-zfs | ZFS Pool | VM disks |
+| tank | Directory | Additional storage |
 
-```
-archive/                                   # Root dataset
-│
-├── vm-backup/                             # VM backup repository
-│   │
-│   ├── dc01/                              # Domain Controller backups
-│   │   ├── @YYYY-MM-DD-daily
-│   │   ├── @YYYY-MM-DD-weekly
-│   │   └── retention-managed snapshots
-│   │
-│   ├── client01/                          # Client VM backups
-│   │   └── daily + weekly snapshots
-│   │
-│   ├── ubu01/                             # Ubuntu server backups
-│   │   └── daily + weekly snapshots
-│   │
-│   ├── pfsense/                           # Firewall backups
-│   │   └── daily + weekly snapshots
-│   │
-│   └── wazuh/                             # SIEM backups
-│       └── daily + weekly snapshots
-│
-├── metadata-backup/
-│   ├── pve-nodes/
-│   └── cluster-config/
-│
-└── reserved/
-    ├── archive-vault/
-    └── future-offsite-replication/
-```
-
-
+---
 
 **END OF STORAGE LAYOUT DOCUMENT**
