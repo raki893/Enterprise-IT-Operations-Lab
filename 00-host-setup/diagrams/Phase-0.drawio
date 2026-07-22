@@ -113,7 +113,7 @@
         <mxCell id="TNZWAU5KYhN_NSD0iMVZ-14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#e1f5ee;strokeColor=#0f6e56;strokeWidth=2" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Primary ZFS Tier (rpool)&lt;br&gt;Fast I/O&lt;br&gt;OS • Snapshots • Active VMs&lt;br&gt;&lt;/font&gt;" vertex="1">
           <mxGeometry height="90" width="280" x="450" y="390" as="geometry" />
         </mxCell>
-        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#faeeda;strokeColor=#854f0b;strokeWidth=2" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Secondary Storage (tank)&lt;br&gt;Backups and archives&lt;br&gt;ISO images • Templates • Retention&lt;br&gt;Retention: 7 daily + 4 weekly&lt;/font&gt;" vertex="1">
+        <mxCell id="TNZWAU5KYhN_NSD0iMVZ-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;fillColor=#faeeda;strokeColor=#854f0b;strokeWidth=2" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Secondary Storage (tank)&lt;br&gt;Backups and extra storage&lt;br&gt;ISO images • Templates • Overflow&lt;br&gt;Retention: reviewed by capacity&lt;/font&gt;" vertex="1">
           <mxGeometry height="90" width="280" x="910" y="390" as="geometry" />
         </mxCell>
         <mxCell id="TNZWAU5KYhN_NSD0iMVZ-16" edge="1" parent="1" source="TNZWAU5KYhN_NSD0iMVZ-14" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#3d3d3d;strokeWidth=2;exitX=0.999;exitY=0.129;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.001;entryY=0.17;entryDx=0;entryDy=0;entryPerimeter=0;" target="TNZWAU5KYhN_NSD0iMVZ-15" value="">
